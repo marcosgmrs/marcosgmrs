@@ -55,18 +55,3 @@
 ![Angular+Fundamentos](https://progress-bar.xyz/100/?title=Angular+Fundamentos&width=500&color=FF6B35)
 ![Angular+Avancado](https://progress-bar.xyz/60/?title=Angular+Avan%C3%A7ado&width=500&color=FF6B35)
 ![RxJS](https://progress-bar.xyz/30/?title=RxJS&width=500&color=FF6B35)
-
----
-
-### 📊 Estatísticas
-
-<div align="center">
-  <img 
-    height="180" 
-    src="https://github-readme-stats.vercel.app/api?username=marcosgmrs&show_icons=true&theme=tokyonight&include_all_commits=true&locale=pt-br&title_color=FF6B35&icon_color=FF6B35"
-  />
-  <img 
-    height="180" 
-    src="https://github-readme-stats.vercel.app/api/top-langs/?username=marcosgmrs&theme=tokyonight&layout=compact&custom_title=Tecnologias&langs_count=6&title_color=FF6B35"
-  />
-</div>
