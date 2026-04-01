@@ -43,7 +43,7 @@
 | Projeto | Descrição | Status | Deploy |
 |---|---|---|---|
 | [meu-app-angular](https://github.com/marcosgmrs/meu-app-angular) | App Angular com autenticação, rotas protegidas, APIs REST e dark mode | ✅ Concluído | [Ver online](https://meu-app-angular.vercel.app) |
-| Em breve | Projeto 2 | 🔨 Em desenvolvimento | — |
+| [mineralogia](https://github.com/marcosgmrs/mineralogia) | Catálogo satírico de minerais — ciência vs misticismo, com quiz | ✅ Concluído | [Ver online](https://mineralogia.vercel.app) |
 | Em breve | Projeto 3 | 🔨 Em desenvolvimento | — |
 
 ---
