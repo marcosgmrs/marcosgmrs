@@ -1,0 +1,88 @@
+.contato-header {
+  margin-bottom: 48px;
+}
+
+.contato-header h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.contato-header p {
+  color: var(--cor-texto-secundario);
+  font-size: 15px;
+}
+
+.contato-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--cor-borda);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.contato-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  background: var(--cor-fundo-card);
+  transition: background 0.2s;
+}
+
+.contato-card:hover {
+  background: var(--cor-fundo-hover);
+}
+
+.contato-icone {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.contato-card h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cor-texto-secundario);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.contato-card a {
+  font-size: 14px;
+  color: var(--cor-texto);
+  transition: color 0.2s;
+}
+
+.contato-card a:hover {
+  color: var(--cor-destaque);
+  opacity: 1;
+}
+
+.contato-card p {
+  font-size: 14px;
+  color: var(--cor-texto);
+}
+
+.contato-rodape {
+  padding: 20px 0;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.contato-rodape p {
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .contato-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contato-card {
+    padding: 20px 24px;
+  }
+}

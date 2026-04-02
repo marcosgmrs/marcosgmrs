@@ -1,0 +1,24 @@
+<div class="projetos-header">
+  <h2>Projetos</h2>
+  <p>Aplicações desenvolvidas durante minha jornada de aprendizado.</p>
+</div>
+
+<div class="projetos-lista">
+  @for (projeto of projetos; track projeto.nome) {
+    <div class="projeto-card" [class.destaque]="projeto.destaque">
+      <div class="projeto-topo">
+        <h3>{{ projeto.nome }}</h3>
+        <div class="projeto-links">
+          <a [href]="projeto.github" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          <a [href]="projeto.deploy" target="_blank" rel="noopener noreferrer">Ver online →</a>
+        </div>
+      </div>
+      <p class="projeto-descricao">{{ projeto.descricao }}</p>
+      <div class="projeto-tags">
+        @for (tech of projeto.tecnologias; track tech) {
+          <span class="tag">{{ tech }}</span>
+        }
+      </div>
+    </div>
+  }
+</div>

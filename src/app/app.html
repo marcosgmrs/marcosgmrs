@@ -1,0 +1,14 @@
+<nav>
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-logo">MG</a>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Início</a>
+    <a routerLink="/projetos" routerLinkActive="active">Projetos</a>
+    <a routerLink="/habilidades" routerLinkActive="active">Habilidades</a>
+    <a routerLink="/sobre" routerLinkActive="active">Sobre</a>
+    <a routerLink="/contato" routerLinkActive="active">Contato</a>
+  </div>
+</nav>
+
+<div class="conteudo">
+  <router-outlet />
+</div>

@@ -1,0 +1,23 @@
+<div class="habilidades-header">
+  <h2>Habilidades</h2>
+  <p>Tecnologias que uso no dia a dia — com honestidade sobre o nível de cada uma.</p>
+</div>
+
+@for (categoria of categorias; track categoria) {
+  <div class="categoria-secao">
+    <h3 class="categoria-titulo">{{ categoria }}</h3>
+    <div class="habilidades-lista">
+      @for (h of porCategoria(categoria); track h.nome) {
+        <div class="habilidade-item">
+          <div class="habilidade-topo">
+            <span class="habilidade-nome">{{ h.nome }}</span>
+            <span class="habilidade-nivel">{{ h.nivel }}%</span>
+          </div>
+          <div class="barra-fundo">
+            <div class="barra-progresso" [style.width.%]="h.nivel"></div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+}

@@ -1,0 +1,145 @@
+.hero {
+  padding: 80px 0 100px;
+  max-width: 640px;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  display: inline-block;
+}
+
+h1 {
+  font-size: 56px;
+  font-weight: 600;
+  color: var(--cor-texto);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--cor-destaque);
+  margin-bottom: 24px;
+}
+
+.hero-descricao {
+  font-size: 16px;
+  color: var(--cor-texto-secundario);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+
+.hero-acoes {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primario {
+  padding: 12px 28px;
+  background: var(--cor-texto);
+  color: var(--cor-fundo);
+  border-radius: var(--raio);
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.btn-primario:hover {
+  opacity: 0.85;
+  color: var(--cor-fundo);
+}
+
+.btn-secundario {
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--cor-texto-secundario);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.btn-secundario:hover {
+  border-color: var(--cor-texto-secundario);
+  color: var(--cor-texto);
+  opacity: 1;
+}
+
+.destaques {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.destaque-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.destaque-numero {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--cor-texto);
+  letter-spacing: -0.02em;
+}
+
+.destaque-label {
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+}
+
+.destaque-separador {
+  width: 1px;
+  height: 40px;
+  background: var(--cor-borda);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 0 64px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .hero-acoes {
+    flex-direction: column;
+  }
+
+  .btn-primario,
+  .btn-secundario {
+    text-align: center;
+  }
+
+  .destaques {
+    gap: 24px;
+  }
+
+  .destaque-numero {
+    font-size: 24px;
+  }
+}
