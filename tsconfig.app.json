@@ -1,14 +1,13 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "rootDir": "./src",
-    "types": []
+    "module": "ES6",
+    "target": "ES2020",
+    "outDir": "dist",
+    "strict": true,
+    "sourceMap": true,
+    "rootDir": "./src"
   },
   "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "src/**/*.spec.ts"
+    "src"
   ]
 }

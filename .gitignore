@@ -1,1 +1,16 @@
-node_modules
+# Dependências
+node_modules/
+
+# Build do Angular
+dist/
+.angular/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+
+# Ambiente
+.env
+.env.*
