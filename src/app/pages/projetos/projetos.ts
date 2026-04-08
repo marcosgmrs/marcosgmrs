@@ -18,6 +18,14 @@ interface Projeto {
 export class Projetos {
   projetos: Projeto[] = [
     {
+      nome: 'aprenda-angular',
+      descricao: 'Aplicação Angular completa, com finalidade educacional, reproduzindo de forma didática minha rotina de estudos.',
+      tecnologias: ['Angular 18', 'TypeScript', 'RxJS', 'GitHub API'],
+      github: 'https://github.com/marcosgmrs/aprenda-angular',
+      deploy: 'https://aprenda-angular.vercel.app',
+      destaque: true
+    },
+    {
       nome: 'meu-app-angular',
       descricao: 'Aplicação Angular completa com autenticação, rotas protegidas por guards, consumo de API REST, formulários reativos e dashboard de perfil com dados reais do GitHub.',
       tecnologias: ['Angular 18', 'TypeScript', 'RxJS', 'GitHub API'],
