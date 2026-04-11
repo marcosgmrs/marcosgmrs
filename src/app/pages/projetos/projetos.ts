@@ -22,7 +22,7 @@ export class Projetos {
       descricao: 'Plataforma educacional premium desenvolvida com Angular 18+, focada em performance zoneless, reatividade com Signals e fluxo de trabalho assistido por IA.',
       tecnologias: ['Angular 18+', 'Signals', 'Zoneless', 'IA Assisted', 'TypeScript'],
       github: 'https://github.com/marcosgmrs/vibecoding',
-      deploy: 'https://vibecoding.vercel.app',
+      deploy: 'https://vibecodeble.vercel.app',
       destaque: true
     },
     {
