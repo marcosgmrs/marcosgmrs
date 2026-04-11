@@ -18,9 +18,17 @@ interface Projeto {
 export class Projetos {
   projetos: Projeto[] = [
     {
+      nome: 'Vibe Coding',
+      descricao: 'Plataforma educacional premium desenvolvida com Angular 18+, focada em performance zoneless, reatividade com Signals e fluxo de trabalho assistido por IA.',
+      tecnologias: ['Angular 18+', 'Signals', 'Zoneless', 'IA Assisted', 'TypeScript'],
+      github: 'https://github.com/marcosgmrs/vibecoding',
+      deploy: 'https://vibecoding.vercel.app',
+      destaque: true
+    },
+    {
       nome: 'aprenda-angular',
       descricao: 'Aplicação Angular completa, com finalidade educacional, reproduzindo de forma didática minha rotina de estudos.',
-      tecnologias: ['Angular 18', 'TypeScript', 'RxJS', 'GitHub API'],
+      tecnologias: ['Angular 18', 'TypeScript', 'Signals', 'Breadcrumbs'],
       github: 'https://github.com/marcosgmrs/aprenda-angular',
       deploy: 'https://aprenda-angular.vercel.app',
       destaque: true
