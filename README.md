@@ -45,7 +45,7 @@
 
 | Projeto | Descrição | Status | Deploy |
 |---|---|---|---|
-| [marcosgmrs](https://github.com/marcosgmrs/marcosgmrs) | Portfolio desenvolvido em Angular, sobre progresso de aprendizado. | ✅ Concluído | [Ver online](https://marcosgmrs.vercel.app) |
+| [marcosgmrs](https://github.com/marcosgmrs/marcosgmrs) | Portfólio desenvolvido em Angular, sobre progresso de aprendizado. | ✅ Concluído | [Ver online](https://marcosgmrs.vercel.app) |
 | [Aprenda Angular](https://github.com/marcosgmrs/aprenda-angular) | Site educacional em Angular sobre desenvolvimento web — em português | ✅ Concluído | [Ver online](https://aprenda-angular.vercel.app) |
 | [estudos-angular](https://github.com/marcosgmrs/estudos-angular) | App Angular com autenticação, guards, interceptors, API do GitHub e dashboard, aplicação das técnicas aprendidas no anterior | 🔄 Em andamento | [Ver online](https://meus-estudos-angular.vercel.app) |
 | [vibecoding](https://github.com/marcosgmrs/vibecoding) | Site educacional em Angular sobre desenvolvimento web — em português | ✅ Concluído | [Ver online](https://vibecodeble.vercel.app) |
