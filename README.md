@@ -45,9 +45,10 @@
 
 | Projeto | Descrição | Status | Deploy |
 |---|---|---|---|
-| [estudos-angular](https://github.com/marcosgmrs/estudos-angular) | App Angular com autenticação, guards, interceptors, API do GitHub e dashboard | 🔄 Em andamento | [Ver online](https://meus-estudos-angular.vercel.app) |
+| [Aprenda Angular](https://github.com/marcosgmrs/aprenda-angular) | Site educacional em Angular sobre desenvolvimento web — em português | ✅ Concluído | [Ver online](https://aprenda-angular.vercel.app) |
+| [estudos-angular](https://github.com/marcosgmrs/estudos-angular) | App Angular com autenticação, guards, interceptors, API do GitHub e dashboard, aplicação das técnicas aprendidas no anterior | 🔄 Em andamento | [Ver online](https://meus-estudos-angular.vercel.app) |
+| [vibecoding](https://github.com/marcosgmrs/vibecoding) | Site educacional em Angular sobre desenvolvimento web — em português | ✅ Concluído | [Ver online](https://vibecodeble.vercel.app) |
 | [mineralogia](https://github.com/marcosgmrs/mineralogia) | Catálogo satírico de minerais — ciência vs misticismo, com quiz interativo | ✅ Concluído | [Ver online](https://mineralogia.vercel.app) |
-| [aprenda-angular](https://github.com/marcosgmrs/aprenda-angular) | Site educacional em Angular sobre desenvolvimento web — em português | ✅ Concluído | [Ver online](https://aprenda-angular.vercel.app) |
 
 ---
 
