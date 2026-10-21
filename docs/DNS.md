@@ -3,17 +3,32 @@
 O DNS de `os.eti.br` fica na **Cloudflare**. O site é servido pela **Vercel** e o e-mail pelo **Zoho Mail**.
 Na Cloudflare, o campo "Nome" é relativo à zona `os.eti.br` (ex.: `marc` = `marc.os.eti.br`).
 
-## 1. Site (Vercel) — trocar CNAME por A
+## 0. Estado atual da zona (não mexer)
 
-O DNS não permite **CNAME** junto com **MX/TXT** no mesmo nome. Hoje `marc` é um CNAME para
-`cname.vercel-dns.com`, então ele precisa virar um registro **A** antes de configurar o e-mail.
+| Tipo | Nome | Conteúdo | Para quê |
+|---|---|---|---|
+| CNAME | `*` | `cname.vercel-dns.com` | Coringa: todo subdomínio sem registro próprio vai para a Vercel |
+| CNAME | `os.eti.br` | `cname.vercel-dns.com` | Domínio raiz (redireciona para `marc`) |
+| CNAME | `opi-api` | `sime-api.onrender.com` | OPI API na Render |
+| MX | `os.eti.br` | `.` | "Null MX": `@os.eti.br` não recebe e-mail |
+| TXT | `os.eti.br` | `v=spf1 -all` | `@os.eti.br` não envia e-mail |
+| TXT | `_dmarc` | `v=DMARC1; p=reject;` | Rejeita quem tentar falsificar `@os.eti.br` |
+
+Os três últimos protegem o domínio raiz contra falsificação e **valem só para `@os.eti.br`**.
+O `marc` recebe registros próprios de e-mail, que têm prioridade para esse nome.
+
+## 1. Site (Vercel) — registro A próprio para o `marc`
+
+Hoje o `marc` funciona pelo coringa `*`. Mas o coringa só cobre nomes que **não existem**: assim
+que o `marc` ganhar qualquer registro (MX, TXT, ou mesmo `cv.marc`), o coringa deixa de valer
+para ele e o site cai. Por isso, **antes** de configurar o e-mail, crie (sem apagar nada):
 
 | Tipo | Nome | Conteúdo | Proxy |
 |---|---|---|---|
 | A | `marc` | `216.198.79.1` | DNS only (nuvem cinza) |
 
 > O IP é o recomendado pela Vercel (Settings → Domains → `marc.os.eti.br`). Se o painel mostrar
-> outro, use o do painel. Depois de trocar, o domínio deve continuar "Valid Configuration" na Vercel.
+> outro, use o do painel. Depois de criar, o domínio deve continuar "Valid Configuration" na Vercel.
 
 ## 2. E-mail (Zoho Mail) — contato@marc.os.eti.br
 
