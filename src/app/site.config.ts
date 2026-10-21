@@ -4,6 +4,8 @@ export const SITE = {
   dominio: 'marc.os.eti.br',
   url: 'https://marc.os.eti.br',
   email: 'contato@marc.os.eti.br',
+  // Currículo em registros TXT (ver docs/DNS.md)
+  cvDns: 'cv.marc.os.eti.br',
   // Login do webmail (Zoho Mail). Troque se usar outro provedor.
   webmail: 'https://mail.zoho.com'
 }

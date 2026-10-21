@@ -82,6 +82,24 @@
   font-style: italic;
 }
 
+.contato-rodape p.contato-terminal {
+  margin-top: 12px;
+  font-style: normal;
+}
+
+.contato-terminal code {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 2px 8px;
+  background: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 2px;
+  color: var(--cor-destaque);
+  font-family: monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+
 @media (max-width: 768px) {
   .contato-grid {
     grid-template-columns: 1fr;
