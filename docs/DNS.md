@@ -1,7 +1,7 @@
 # DNS do marc.os.eti.br
 
 O DNS de `os.eti.br` fica na **Cloudflare**. O site é servido pela **Vercel**; o e-mail chega pelo
-**Cloudflare Email Routing** (lido no Gmail) e sai pela **Brevo**.
+**Cloudflare Email Routing** e é lido e enviado pelo **Gmail**.
 Na Cloudflare, o campo "Nome" é relativo à zona `os.eti.br` (ex.: `marc` = `marc.os.eti.br`).
 
 ## 0. Estado atual da zona (não mexer)
@@ -33,82 +33,84 @@ para ele e o site cai. Por isso, **antes** de configurar o e-mail, crie (sem apa
 > O IP é o recomendado pela Vercel (Settings → Domains → `marc.os.eti.br`). Se o painel mostrar
 > outro, use o do painel. Depois de criar, o domínio deve continuar "Valid Configuration" na Vercel.
 
-## 2. E-mail — contato@marc.os.eti.br (Cloudflare + Gmail + Brevo, grátis)
+## 2. E-mail — contato@marc.os.eti.br (Cloudflare recebe, Gmail envia)
 
-O plano gratuito do Zoho acabou, então o e-mail é montado com três peças gratuitas:
+O plano gratuito do Zoho acabou, então o e-mail usa duas peças gratuitas:
 
 - **Receber:** Cloudflare Email Routing repassa `contato@marc.os.eti.br` para o Gmail.
-- **Ler e responder:** Gmail (o ícone de envelope do site abre o Gmail).
-- **Enviar:** o Gmail envia como `contato@marc.os.eti.br` pelo SMTP da Brevo (300 e-mails/dia grátis).
+- **Ler e enviar:** Gmail, com "Enviar e-mail como" pelo SMTP do próprio Google
+  (`smtp.gmail.com` + senha de app). O ícone de envelope do site abre o Gmail.
 
-### 2.1 Ativar o Email Routing (Cloudflare)
+> Limitação: o envio sai assinado (DKIM) como `gmail.com`, não como `marc.os.eti.br`, então o
+> DMARC do `marc` não "alinha". Por isso o `_dmarc.marc` fica em `p=none` (seção 2.2) — sem ele,
+> o `marc` herdaria o `p=reject` do raiz e as mensagens seriam recusadas. Se aparecer problema de
+> entrega, troque só o SMTP pela Brevo (seção 2.5).
+
+### 2.1 Receber: Email Routing (Cloudflare)
 
 A Cloudflare só permite ativar o Email Routing **primeiro no domínio raiz**; o `marc` entra
 depois, em Settings → Subdomains.
 
-1. Cloudflare → `os.eti.br` → **Email → Email Routing → Get started / Enable**.
-2. O assistente quer criar no **raiz** os MX `route1/2/3.mx.cloudflare.net` e um SPF, e vai
-   apontar conflito com o `MX .` e o `v=spf1 -all`. **Permita** que ele substitua esses dois.
+1. Cloudflare → `os.eti.br` → **Email → Email Routing → Get started**.
+   Se o assistente pedir para criar um endereço no raiz, pule ("Skip") ou crie e apague depois.
+2. Ele quer criar no **raiz** os MX `route1/2/3.mx.cloudflare.net` e um SPF, e vai apontar
+   conflito com o `MX .` e o `v=spf1 -all`. **Permita** que substitua esses dois.
    **Mantenha** o `_dmarc` (`p=reject`): ele continua impedindo falsificação de `@os.eti.br`.
-3. Em **Destination addresses**, adicione o seu Gmail e confirme pelo link que chega nele.
-4. Em **Settings → Subdomains**, adicione `marc`. A Cloudflare cria sozinha os MX, o SPF
+3. **Destination addresses → Add**: o seu Gmail. Confirme pelo link que chega nele.
+4. **Settings → Subdomains → Add**: `marc`. A Cloudflare cria sozinha os MX, o SPF
    (`v=spf1 include:_spf.mx.cloudflare.net ~all`) e o DKIM de encaminhamento no `marc`.
-5. Em **Routing rules → Create address**: `contato` @ `marc.os.eti.br` → **Send to an email** → seu Gmail.
+5. **Routing rules → Create address**: `contato` @ `marc.os.eti.br` → **Send to an email** → seu Gmail.
 6. No raiz, deixe **sem regras** e o **catch-all desativado**: e-mail para `@os.eti.br` é recusado.
-7. Teste: de **outra** conta (não o próprio Gmail), mande para `contato@marc.os.eti.br`.
-   Deve chegar no Gmail (olhe também o spam na primeira vez).
 
-### 2.2 DMARC próprio do `marc`
+### 2.2 DMARC próprio do `marc` (obrigatório antes de enviar)
 
 | Tipo | Nome | Conteúdo |
 |---|---|---|
 | TXT | `_dmarc.marc` | `v=DMARC1; p=none; rua=mailto:contato@marc.os.eti.br` |
 
-Sem ele, o `marc` herda o `p=reject` do raiz, e qualquer erro de configuração faria seus
-e-mails serem recusados. Depois que tudo funcionar por umas semanas, dá para subir para `p=quarantine`.
+### 2.3 Liberar o Google no SPF do `marc`
 
-### 2.3 Autenticar o domínio na Brevo
+**Edite** o SPF que a Cloudflare criou no `marc` (não crie outro — só pode haver **um**
+`v=spf1` por nome):
 
-1. Crie a conta grátis em **brevo.com** (pode pôr "Pessoal" como empresa).
-2. **Senders, Domains & Dedicated IPs → Domains → Add a domain** → `marc.os.eti.br`
-   → autenticar manualmente ("Authenticate the domain yourself").
-3. Crie na Cloudflare os registros que a Brevo mostrar (os valores são gerados por conta):
-   - **TXT** `marc` com `brevo-code:...`
-   - **DKIM**: em geral 2 **CNAME** (`brevo1._domainkey.marc` e `brevo2._domainkey.marc`),
-     nuvem cinza. Contas mais antigas recebem um TXT `mail._domainkey.marc`.
-   - **DMARC**: já existe (2.2) — não crie outro.
-   - **SPF**: se a Brevo pedir um `include`, **edite** o SPF existente do `marc` em vez de criar
-     outro (só pode haver **um** `v=spf1` por nome), por exemplo:
-     `v=spf1 include:_spf.mx.cloudflare.net include:spf.brevo.com ~all`
-4. Clique em **Authenticate** na Brevo até tudo ficar verde.
-5. **Senders → Add a sender**: nome "Marcos Guimarães", e-mail `contato@marc.os.eti.br`.
-   O código de confirmação chega no Gmail pelo Email Routing.
+```
+v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all
+```
 
-### 2.4 Chave SMTP da Brevo
+### 2.4 Enviar: "Enviar e-mail como" no Gmail
 
-**SMTP & API → SMTP → Generate a new SMTP key**. Anote:
-
-- **Servidor:** `smtp-relay.brevo.com` · **Porta:** `587`
-- **Login:** o "SMTP login" mostrado na página (não é o seu e-mail; algo como `xxxx@smtp-brevo.com`)
-- **Senha:** a SMTP key gerada (aparece uma vez só — guarde num gerenciador de senhas)
-
-### 2.5 "Enviar como" no Gmail
-
-1. Gmail → engrenagem → **Ver todas as configurações → Contas e importação →
+1. Conta Google → **Segurança** → ative a **Verificação em duas etapas** (exigida para senha de app).
+2. Acesse **myaccount.google.com/apppasswords**, crie uma senha de app (nome: `marc.os.eti.br`)
+   e copie os 16 caracteres. Ela aparece uma vez só.
+3. Gmail → engrenagem → **Ver todas as configurações → Contas e importação →
    Enviar e-mail como → Adicionar outro endereço de e-mail**.
-2. Nome: `Marcos Guimarães` · E-mail: `contato@marc.os.eti.br` · deixe "Tratar como alias" marcado.
-3. Servidor SMTP `smtp-relay.brevo.com`, porta `587`, login e senha do passo 2.4,
-   **Conexão segura com TLS**.
-4. O Gmail manda um código para `contato@marc.os.eti.br` (chega no próprio Gmail) → confirme.
-5. Em "Enviar e-mail como", marque **"Responder do mesmo endereço para o qual a mensagem foi enviada"**.
+4. Nome: `Marcos Guimarães` · E-mail: `contato@marc.os.eti.br` · deixe "Tratar como alias" marcado.
+5. Servidor SMTP: `smtp.gmail.com` · Porta: `587` · Nome de usuário: **o seu endereço Gmail
+   completo** · Senha: **a senha de app** · **Conexão segura com TLS**.
+6. O Gmail manda um código para `contato@marc.os.eti.br`; ele chega no próprio Gmail pelo
+   Email Routing. Confirme.
+7. Em "Enviar e-mail como", marque **"Responder do mesmo endereço para o qual a mensagem foi enviada"**.
 
-### 2.6 Testar
+**Testar** (sempre de/para **outra** conta, não o próprio Gmail):
+1. Mande de outra conta para `contato@marc.os.eti.br` → deve chegar no Gmail (olhe o spam na 1ª vez).
+2. Responda escolhendo o remetente `contato@marc.os.eti.br`.
+3. Na conta que recebeu (se for Gmail: ⋮ → **Mostrar original**): `SPF: PASS` e `DKIM: PASS`
+   (ambos de gmail.com) são o esperado. `DMARC` pode aparecer como FAIL — normal neste modelo,
+   e a política `p=none` faz a mensagem ser entregue mesmo assim.
 
-1. De outra conta, mande um e-mail para `contato@marc.os.eti.br` → chega no Gmail.
-2. Responda pelo Gmail com o remetente `contato@marc.os.eti.br`.
-3. Na conta que recebeu a resposta (se for Gmail: ⋮ → **Mostrar original**), confira
-   `DKIM: PASS` (com `marc.os.eti.br`) e `DMARC: PASS`. O SPF pode aparecer como do domínio
-   da Brevo — normal; o DMARC passa pelo DKIM.
+### 2.5 Plano B de envio: Brevo (se o Gmail cair no spam)
+
+Troca só o servidor SMTP do passo 2.4; o recebimento continua igual.
+
+1. Conta grátis em **brevo.com** → **Senders, Domains & Dedicated IPs → Domains → Add a domain**
+   → `marc.os.eti.br` → autenticar manualmente.
+2. Crie na Cloudflare o que a Brevo mostrar: **TXT** `marc` com `brevo-code:...` e o **DKIM**
+   (em geral 2 CNAME `brevo1._domainkey.marc` e `brevo2._domainkey.marc`, nuvem cinza).
+   Se pedir SPF, acrescente o `include` no SPF existente do `marc`.
+3. **SMTP & API → SMTP → Generate a new SMTP key**.
+4. No Gmail, edite o `contato@marc.os.eti.br` em "Enviar e-mail como": servidor
+   `smtp-relay.brevo.com`, porta `587`, login = "SMTP login" da Brevo, senha = SMTP key.
+5. Com isso o DKIM sai como `marc.os.eti.br` e o DMARC passa a dar PASS.
 
 ## 3. Currículo no DNS
 
