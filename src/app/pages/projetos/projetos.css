@@ -62,6 +62,12 @@
   opacity: 1;
 }
 
+.projeto-privado {
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  opacity: 0.6;
+}
+
 .projeto-descricao {
   color: var(--cor-texto-secundario);
   font-size: 14px;

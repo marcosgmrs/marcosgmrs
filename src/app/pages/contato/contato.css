@@ -32,6 +32,11 @@
   transition: background 0.2s;
 }
 
+/* Último card ocupa a linha inteira quando a quantidade é ímpar */
+.contato-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .contato-card:hover {
   background: var(--cor-fundo-hover);
 }

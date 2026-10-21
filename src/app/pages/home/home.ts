@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PROJETOS } from '../projetos/projetos.data';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {}
+export class Home {
+  totalProjetos = PROJETOS.length
+}

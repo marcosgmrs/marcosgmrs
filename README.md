@@ -11,8 +11,11 @@
   
   <p>📍 São Gonçalo, RJ &nbsp;|&nbsp; 🎯 Desenvolvedor Front-end Júnior</p>
 
-  <a href="https://marcosgmrs.vercel.app">
-    <img src="https://img.shields.io/badge/Portfólio-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
+  <a href="https://marc.os.eti.br">
+    <img src="https://img.shields.io/badge/marc.os.eti.br-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
+  </a>
+  <a href="mailto:contato@marc.os.eti.br">
+    <img src="https://img.shields.io/badge/contato@marc.os.eti.br-c8b560?style=for-the-badge&logo=maildotru&logoColor=black"/>
   </a>
   <a href="https://linkedin.com/in/marcosgmrs">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -45,6 +48,18 @@
 
 | Projeto | Descrição | Status | Deploy |
 |---|---|---|---|
+| OPI-RJ 🔒 | Portal do Observatório da Pessoa Idosa (RJ) — mapa dos 92 municípios, indicadores, comparador e dados abertos. React + Vite | ✅ Concluído | [Ver online](https://opi-rj.os.eti.br) |
+| OPI API 🔒 | API REST (FastAPI) que coleta, versiona e serve os indicadores do OPI, com coletores agendados no GitHub Actions | ✅ Concluído | [Ver online](https://opi-api.os.eti.br) |
+| SIME 🔒 | Sistema de monitoramento sobre o envelhecimento para a SEIJES-RJ — Angular 21 + pipeline de dados em Python | ✅ Concluído | [Ver online](https://sime.os.eti.br) |
+| [marcosgmrs](https://github.com/marcosgmrs/marcosgmrs) | Portfólio desenvolvido em Angular, sobre progresso de aprendizado. | ✅ Concluído | [Ver online](https://marc.os.eti.br) |
+| [vibecoding](https://github.com/marcosgmrs/vibecoding) | Plataforma educacional em Angular com Signals, zoneless e fluxo assistido por IA | ✅ Concluído | [Ver online](https://vibecoding.os.eti.br) |
+| [Aprenda Angular](https://github.com/marcosgmrs/aprenda-angular) | Site educacional em Angular sobre desenvolvimento web — em português | ✅ Concluído | [Ver online](https://aprenda-angular.os.eti.br) |
+| [estudos-angular](https://github.com/marcosgmrs/estudos-angular) | App Angular com autenticação, guards, interceptors, API do GitHub e dashboard, aplicação das técnicas aprendidas no anterior | 🔄 Em andamento | [Ver online](https://meu-app-angular.os.eti.br) |
+| [mineralogia](https://github.com/marcosgmrs/mineralogia) | Catálogo satírico de minerais — ciência vs misticismo, com quiz interativo | ✅ Concluído | [Ver online](https://mineralogia.os.eti.br) |
+
+🔒 repositório privado
+
+---|---|---|---|
 | [marcosgmrs](https://github.com/marcosgmrs/marcosgmrs) | Portfólio desenvolvido em Angular, sobre progresso de aprendizado. | ✅ Concluído | [Ver online](https://marcosgmrs.vercel.app) |
 | [Aprenda Angular](https://github.com/marcosgmrs/aprenda-angular) | Site educacional em Angular sobre desenvolvimento web — em português | ✅ Concluído | [Ver online](https://aprenda-angular.vercel.app) |
 | [estudos-angular](https://github.com/marcosgmrs/estudos-angular) | App Angular com autenticação, guards, interceptors, API do GitHub e dashboard, aplicação das técnicas aprendidas no anterior | 🔄 Em andamento | [Ver online](https://meus-estudos-angular.vercel.app) |

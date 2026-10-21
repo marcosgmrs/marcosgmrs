@@ -8,7 +8,7 @@
     <span class="contato-icone">📧</span>
     <div>
       <h4>Email</h4>
-      <a href="mailto:marcosgmrs@email.com">marcosgmrs@email.com</a>
+      <a [href]="'mailto:' + site.email">{{ site.email }}</a>
     </div>
   </div>
 
@@ -25,6 +25,14 @@
     <div>
       <h4>GitHub</h4>
       <a href="https://github.com/marcosgmrs" target="_blank" rel="noopener noreferrer">github.com/marcosgmrs</a>
+    </div>
+  </div>
+
+  <div class="contato-card">
+    <span class="contato-icone">🌐</span>
+    <div>
+      <h4>Site</h4>
+      <a [href]="site.url">{{ site.dominio }}</a>
     </div>
   </div>
 

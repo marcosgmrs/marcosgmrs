@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SITE } from '../../site.config';
 
 @Component({
   selector: 'app-contato',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './contato.html',
   styleUrl: './contato.css'
 })
-export class Contato {}
+export class Contato {
+  site = SITE
+}

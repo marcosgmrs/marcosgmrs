@@ -44,10 +44,42 @@ nav {
   color: var(--cor-texto);
 }
 
+.nav-links a.nav-email {
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  border-left: 1px solid var(--cor-borda);
+}
+
+.nav-links a.nav-email:hover {
+  color: var(--cor-destaque);
+}
+
 .conteudo {
   max-width: 1000px;
   margin: 0 auto;
   padding: 80px 48px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 32px 24px;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  font-family: monospace;
+}
+
+footer a {
+  color: var(--cor-texto-secundario);
+}
+
+footer a:hover {
+  color: var(--cor-destaque);
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -59,6 +91,19 @@ nav {
 
   .nav-links {
     gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* nav é sticky, então já serve de referência para o absolute.
+     No mobile o ícone vai para o canto, ao lado do logo */
+  .nav-links a.nav-email {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    padding-left: 0;
+    border-left: none;
   }
 
   .conteudo {

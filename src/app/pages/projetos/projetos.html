@@ -9,7 +9,11 @@
       <div class="projeto-topo">
         <h3>{{ projeto.nome }}</h3>
         <div class="projeto-links">
-          <a [href]="projeto.github" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          @if (projeto.github) {
+            <a [href]="projeto.github" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          } @else {
+            <span class="projeto-privado">Repositório privado</span>
+          }
           <a [href]="projeto.deploy" target="_blank" rel="noopener noreferrer">Ver online →</a>
         </div>
       </div>
