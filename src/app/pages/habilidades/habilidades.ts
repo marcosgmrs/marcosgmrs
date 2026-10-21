@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 interface Habilidade {
   nome: string
-  nivel: number
+  // Sem nível: tecnologia que só usei em projeto, ainda sem domínio para medir
+  nivel?: number
   categoria: string
+  contexto?: string
 }
 
 @Component({
@@ -26,6 +28,11 @@ export class Habilidades {
     { nome: 'MacOS', nivel: 60, categoria: 'Infraestrutura' },
     { nome: 'Redes locais', nivel: 70, categoria: 'Infraestrutura' },
     { nome: 'Manutenção de PCs', nivel: 80, categoria: 'Infraestrutura' },
+    { nome: 'React', categoria: 'Primeiros passos', contexto: 'Usado no OPI-RJ' },
+    { nome: 'Vite', categoria: 'Primeiros passos', contexto: 'Usado no OPI-RJ' },
+    { nome: 'Leaflet', categoria: 'Primeiros passos', contexto: 'Mapas do OPI-RJ e do SIME' },
+    { nome: 'Python', categoria: 'Primeiros passos', contexto: 'Pipeline de dados do SIME e OPI API' },
+    { nome: 'FastAPI', categoria: 'Primeiros passos', contexto: 'Usado na OPI API' },
     { nome: 'Inglês', nivel: 60, categoria: 'Idiomas' },
     { nome: 'Espanhol', nivel: 20, categoria: 'Idiomas' },
   ]

@@ -25,6 +25,14 @@
   font-weight: 500;
 }
 
+.categoria-descricao {
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: -8px 0 20px;
+}
+
 .habilidades-lista {
   display: flex;
   flex-direction: column;
@@ -67,4 +75,11 @@
   background: var(--cor-destaque);
   border-radius: 1px;
   transition: width 0.6s ease;
+}
+
+/* Sem nível: linha tracejada em vez de barra, para não sugerir uma porcentagem */
+.barra-inicial {
+  background: none;
+  border-top: 1px dashed var(--cor-borda);
+  height: 0;
 }

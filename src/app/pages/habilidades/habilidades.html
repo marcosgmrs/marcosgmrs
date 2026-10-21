@@ -6,15 +6,27 @@
 @for (categoria of categorias; track categoria) {
   <div class="categoria-secao">
     <h3 class="categoria-titulo">{{ categoria }}</h3>
+    @if (categoria === 'Primeiros passos') {
+      <p class="categoria-descricao">
+        Tecnologias que já usei em projetos reais, com apoio de IA, mas que ainda estou aprendendo.
+        Sei explicar o que o código faz, mas não me considero fluente.
+      </p>
+    }
     <div class="habilidades-lista">
       @for (h of porCategoria(categoria); track h.nome) {
         <div class="habilidade-item">
           <div class="habilidade-topo">
             <span class="habilidade-nome">{{ h.nome }}</span>
-            <span class="habilidade-nivel">{{ h.nivel }}%</span>
+            @if (h.nivel !== undefined) {
+              <span class="habilidade-nivel">{{ h.nivel }}%</span>
+            } @else {
+              <span class="habilidade-nivel">{{ h.contexto }}</span>
+            }
           </div>
-          <div class="barra-fundo">
-            <div class="barra-progresso" [style.width.%]="h.nivel"></div>
+          <div class="barra-fundo" [class.barra-inicial]="h.nivel === undefined">
+            @if (h.nivel !== undefined) {
+              <div class="barra-progresso" [style.width.%]="h.nivel"></div>
+            }
           </div>
         </div>
       }
