@@ -6,6 +6,6 @@ export const SITE = {
   email: 'contato@marc.os.eti.br',
   // Currículo em registros TXT (ver docs/DNS.md)
   cvDns: 'cv.marc.os.eti.br',
-  // Login do webmail (Zoho Mail). Troque se usar outro provedor.
-  webmail: 'https://mail.zoho.com'
+  // Onde o e-mail é lido: chega no Gmail pelo Cloudflare Email Routing (ver docs/DNS.md)
+  webmail: 'https://mail.google.com'
 }
